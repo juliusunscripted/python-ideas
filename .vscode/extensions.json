@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ms-python.black-formatter",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "yzhang.markdown-all-in-one",
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.datawrangler",
+        "usernamehw.errorlens"
+    ]
+}
