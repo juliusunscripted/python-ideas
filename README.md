@@ -4,7 +4,7 @@ some python tips and tricks
 
 ## Gettings started
 
-> in case you need help for getting started: follow instructions of repo [new-python-project](https://github.com/suiluj/new-python-project)
+> in case you need help for getting started: follow instructions of repo [new-python-project](https://github.com/juliusunscripted/new-python-project)
 
 
 ## What is the structure of this repo
@@ -14,9 +14,10 @@ some python tips and tricks
 	```bash
 	# clone this repo
 	# cd into this repo
-	# move into 001-interactive-window
-	cd 001-interactive-window
+	# move into interactive-window
+	cd interactive-window
 	# setup prepared project python environment
 	poetry install --compile --sync
 	# you are ready to try out the examples
+	# perhaps you have to reload the vscode window
 	```
