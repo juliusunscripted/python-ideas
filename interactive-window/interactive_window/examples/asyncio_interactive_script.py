@@ -24,17 +24,15 @@
 #   python -m interactive_window.examples.example_01_asyncio
 #   ```
 
-
 # %%
 import asyncio
 import structlog
 from interactive_window.utils import structlog_utils
 
-
+# %%
 structlog_utils.configure_structlog()  # small config log line numbers
 
 # %%
-
 log = structlog.stdlib.get_logger()
 
 # %%
@@ -44,7 +42,11 @@ log.info("hi :)")
 # await asyncio.sleep(1)
 # would result in an pylance error: "await" allowed only within async function
 
+# %%
 
+
+# the main argument `interactive_window_mode` is not required
+# but perhaps you want to use it as condition in your code
 async def main(interactive_window_mode: bool = True):
     # this clever cell trick is important!
     # keep the 'pass' statement so the interactive window cell is valid code
@@ -54,6 +56,7 @@ async def main(interactive_window_mode: bool = True):
 
     # %%
     # ensure that variable `interactive_window_mode` is available while running in interactive window mode
+    # the variable is not required but perhaps you want to use it as condition in your code
     if "interactive_window_mode" not in locals():
         interactive_window_mode = True
 
@@ -89,7 +92,12 @@ async def main(interactive_window_mode: bool = True):
         exit()
 
     # %%
-    print("some more code that will not be executed by script")
+    print(
+        (
+            "some more code that will not be executed when running the python script\n"
+            "but it will be executed in interactive window mode"
+        )
+    )
 
 
 # %%
@@ -109,6 +117,8 @@ if __name__ == "__main__":
 
     if not detected_interactive_window_mode:
         log.info("will run async main now")
+        # the main argument `interactive_window_mode` is not required
+        # but perhaps you want to use it as condition in your code
         asyncio.run(main(interactive_window_mode=detected_interactive_window_mode))
     else:
         log.warning(
