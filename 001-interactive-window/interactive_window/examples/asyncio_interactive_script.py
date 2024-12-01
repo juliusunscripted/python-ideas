@@ -41,13 +41,22 @@ log.info("hi :)")
 # would result in an pylance error: "await" allowed only within async function
 
 
-# %%
-async def main():
+async def main(interactive_window_mode: bool = True):
     # this clever cell trick is important!
     # keep the 'pass' statement so the interactive window cell is valid code
 
     pass
     # start a new cell now with `# %%`
+
+    # %%
+    # ensure that variable `interactive_window_mode` is available while running in interactive window mode
+    if "interactive_window_mode" not in locals():
+        interactive_window_mode = True
+
+    # %%
+    log.info(
+        "i am running in this mode", interactive_window_mode=interactive_window_mode
+    )
 
     # %%
     # continue with your code which can be executed exactly the same in interactive window...
@@ -69,30 +78,41 @@ async def main():
 
     log.info("added all values", all_values_added=all_values_added)
 
+    # %%
+
+    if not interactive_window_mode:
+        # code cells below will not be executed by script run
+        exit()
+
+    # %%
+    print("some more code that will not be executed by script")
+
 
 # %%
 if __name__ == "__main__":
     try:
         asyncio.get_running_loop()
         # will happen when executed in interactive window
-        interactive_window_mode = True
+        detected_interactive_window_mode = True
     except RuntimeError:
         # will happen if executed as normal python file
-        interactive_window_mode = False
+        detected_interactive_window_mode = False
 
     log.info(
-        "checking exectution mode", interactive_window_mode=interactive_window_mode
+        "detection of mode",
+        detected_interactive_window_mode=detected_interactive_window_mode,
     )
 
-    if not interactive_window_mode:
+    if not detected_interactive_window_mode:
         log.info("will run async main now")
-        asyncio.run(main())
+        asyncio.run(main(interactive_window_mode=detected_interactive_window_mode))
     else:
         log.warning(
             (
                 "this code cell is only needed when running the file as normal python script\n"
                 "It will not do anything when being executed in interactive window"
-            )
+            ),
+            detected_interactive_window_mode=detected_interactive_window_mode,
         )
 
 
