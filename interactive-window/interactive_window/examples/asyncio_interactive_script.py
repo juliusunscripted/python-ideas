@@ -28,9 +28,13 @@
 # %%
 import asyncio
 import structlog
+from interactive_window.utils import structlog_utils
 
+
+structlog_utils.configure_structlog()  # small config log line numbers
 
 # %%
+
 log = structlog.stdlib.get_logger()
 
 # %%
