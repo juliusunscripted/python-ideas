@@ -1,9 +1,14 @@
 # plotly basics
 
+## Getting started with plotly
+
+- [watch this YouTube tutorial before doing anything else: Introduction to Plotly Data Visualization](https://youtu.be/_b2KXL0wHQg?si=SKtHQRpQX1zLRyvB)
+	- really! just watch it from start to finish!
+- [only afterwards: read plotly fundamentals](https://plotly.com/python/plotly-fundamentals/)
+
 ## plotly examples
 
 - [plotly.com/python examples graphs](https://plotly.com/python/)
-
 
 ## plotly renderers
 

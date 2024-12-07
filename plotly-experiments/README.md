@@ -1,6 +1,5 @@
 # plotly experiments
 
-## Getting started with plotly
+## links to notes
 
-- [watch this YouTube tutorial before doing anything else: Introduction to Plotly Data Visualization](https://youtu.be/_b2KXL0wHQg?si=SKtHQRpQX1zLRyvB)
-	- really! just watch it from start to finish!
+- [getting started with plotly](notes/plotly-basics.md#getting-started-with-plotly)
