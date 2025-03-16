@@ -2,7 +2,7 @@
 
 some python tips and tricks
 
-## Gettings started
+## Getting started
 
 > in case you need help for getting started: follow instructions of repo [new-python-project](https://github.com/juliusunscripted/new-python-project)
 
@@ -10,7 +10,7 @@ some python tips and tricks
 ## What is the structure of this repo
 
 - I wanted to have one git repository for different python ideas and examples I am planning to share
-- you can open different subfolders with seperate topics in vscode to have a pre configured workspace. For example:
+- you can open different subfolders with separate topics in vscode to have a pre configured workspace. For example:
 	```bash
 	# clone this repo
 	# cd into this repo
