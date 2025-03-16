@@ -29,10 +29,12 @@
 
 ## Examples
 
-- [example_01_asyncio.py](interactive_window/examples/example_01_asyncio.py)
+- [asyncio_interactive_script](interactive_window/examples/asyncio_interactive_script.py)
 	- use the same asyncio code for python scripts and interactive window
-- example_02_autoreload_workflow.py (planned)
+- [autoreload_modules](interactive_window/examples/autoreload_modules/autoreload_modules.py)
 	- how to use autoreload in interactvie window with special setting `magicCommandsAsComments`
+- [interactive_table](interactive_window/examples/interactive_table.py)
+	- use `itables` with easy to use default settings to show dataframe in an interactive way
 - example_03_interactive_async_playwright (planned)
 	- use playwright async api (which can be used in jupyter notebooks/interactive window ipykernel)
 	- showing some examples
