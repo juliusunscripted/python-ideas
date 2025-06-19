@@ -4,6 +4,7 @@ import structlog
 from pprint import pprint
 from robot.api.logger import debug, info, warn, error
 import sys
+import json
 
 from structlog.typing import EventDict, WrappedLogger
 
@@ -40,7 +41,7 @@ class RobotLog:
 
         msg = f"{event}"
         if copied_event_dict:
-            msg += f" | {copied_event_dict}"
+            msg += f" | {json.dumps(copied_event_dict, ensure_ascii=False)}"
         logger_func(msg=msg, html=False)
 
         return event_dict
@@ -65,7 +66,7 @@ class LogJump:
         return event_dict
 
 
-def configure_structlog(colors: bool = True, robotframework_log: bool = True):
+def configure_structlog(colors: bool = True, robotframework_mode: bool = False):
     processors = [
         structlog.contextvars.merge_contextvars,
         structlog.processors.add_log_level,
@@ -81,17 +82,22 @@ def configure_structlog(colors: bool = True, robotframework_log: bool = True):
             ],
         ),
     ]
-    if robotframework_log:
+    if robotframework_mode:
         processors.append(RobotLog())
     processors.append(LogJump(full_path=False))
 
     # if not robotframework_log:
     processors.append(structlog.dev.ConsoleRenderer(colors=colors))
+
+    if robotframework_mode:
+        logger_factory = structlog.PrintLoggerFactory(file=sys.stderr)
+    else:
+        logger_factory = structlog.PrintLoggerFactory()
     structlog.configure(
         processors=processors,
         wrapper_class=structlog.make_filtering_bound_logger(logging.NOTSET),
         context_class=dict,
-        logger_factory=structlog.PrintLoggerFactory(file=sys.stderr),
+        logger_factory=logger_factory,
         cache_logger_on_first_use=False,
     )
 
