@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "robotframework-tips"
+version = "0.1.0"
+description = ""
+authors = ["suiluj <suiluj@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+structlog = "^25.4.0"
+ipykernel = "^6.29.5"
+black = {extras = ["jupyter"], version = "^25.1.0"}
+python-dotenv = "^1.1.0"
+robotframework = "^7.3.1"
+robotframework-robocop = "^6.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

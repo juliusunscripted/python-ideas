@@ -1,0 +1,8 @@
+# https://robotcode.io/02_get_started/configuration
+# Basic settings
+output-dir = "output"
+# log-level = "TRACE"
+log-level = "DEBUG"
+languages = ["en", "de"]
+
+listeners = {'robotframework_tips.utils.robot_exception_traceback_listener.ExceptionTracebackListener' = [], 'robotframework_tips.utils.robot_structlog_listener.StructlogListener' = []}
