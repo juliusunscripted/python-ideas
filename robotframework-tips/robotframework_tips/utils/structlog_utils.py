@@ -24,7 +24,7 @@ class LogJump:
         return event_dict
 
 
-def configure_structlog():
+def configure_structlog(colors: bool = True):
     structlog.configure(
         processors=[
             structlog.contextvars.merge_contextvars,
@@ -41,7 +41,7 @@ def configure_structlog():
                 ],
             ),
             LogJump(full_path=False),
-            structlog.dev.ConsoleRenderer(),
+            structlog.dev.ConsoleRenderer(colors=colors),
         ],
         wrapper_class=structlog.make_filtering_bound_logger(logging.NOTSET),
         context_class=dict,

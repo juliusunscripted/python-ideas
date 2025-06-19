@@ -13,3 +13,5 @@ class StructlogListener:
         log.info("initializing structlog...")
         configure_structlog()
         log.info("structlog is initialized now")
+
+    # message (structlog as json)
