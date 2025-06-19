@@ -138,3 +138,5 @@ if __name__ == "__main__":
 #   ```bash
 #   python -m interactive_window.examples.example_01_asyncio
 #   ```
+
+# %%

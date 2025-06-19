@@ -17,7 +17,7 @@ some python tips and tricks
 	# move into interactive-window
 	cd interactive-window
 	# setup prepared project python environment
-	poetry install --compile --sync
+	poetry sync --compile
 	# you are ready to try out the examples
 	# perhaps you have to reload the vscode window
 	```

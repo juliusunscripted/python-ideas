@@ -7,22 +7,20 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-structlog = "^25.2.0"
-polars = {extras = ["all"], version = "^1.25.2"}
+structlog = "^25.4.0"
+polars = {extras = ["all"], version = "^1.31.0"}
 pyarrow = "^18.1.0"
-deltalake = "^0.25.4"
-pandas = "^2.2.3"
-pydantic = "^2.10.6"
-pydantic-settings = "^2.6.1"
+deltalake = "^1.0.2"
+pandas = "^2.3.0"
+pydantic = "^2.11.7"
+pydantic-settings = "^2.9.1"
 ipykernel = "^6.29.5"
-plotly = "^6.0.0"
-dash = "^2.18.2"
 itables = "^2.2.5"
 black = {extras = ["jupyter"], version = "^25.1.0"}
 tqdm = "^4.67.0"
-python-dotenv = "^1.0.1"
+python-dotenv = "^1.1.0"
 nbconvert = "^7.16.6"
-tornado = "^6.4.2"
+tornado = "^6.5.1"
 
 
 [build-system]
