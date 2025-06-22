@@ -67,7 +67,9 @@ class LogJump:
             file_part = event_dict.pop("pathname")
         else:
             file_part = event_dict.pop("filename")
-        event_dict["_l"] = f'{file_part}:{event_dict.pop("lineno")}'
+
+        # leading space improves link recognition in vscode (but spaces in paths still do not work always)
+        event_dict["_l"] = f' {file_part}:{event_dict.pop("lineno")}'
 
         return event_dict
 
