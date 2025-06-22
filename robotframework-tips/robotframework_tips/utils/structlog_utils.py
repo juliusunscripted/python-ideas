@@ -67,7 +67,7 @@ class LogJump:
             file_part = event_dict.pop("pathname")
         else:
             file_part = event_dict.pop("filename")
-        event_dict["_l"] = f' "File "{file_part}:{event_dict.pop("lineno")}"'
+        event_dict["_l"] = f'{file_part}:{event_dict.pop("lineno")}'
 
         return event_dict
 
