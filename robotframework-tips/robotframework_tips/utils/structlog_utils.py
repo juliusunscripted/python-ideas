@@ -64,10 +64,10 @@ class LogJump:
         self, logger: WrappedLogger, name: str, event_dict: EventDict
     ) -> EventDict:
         if self.full_path:
-            file_part = "\n" + event_dict.pop("pathname")
+            file_part = event_dict.pop("pathname")
         else:
             file_part = event_dict.pop("filename")
-        event_dict["_l"] = f'"{file_part}:{event_dict.pop("lineno")}"'
+        event_dict["_l"] = f' "File "{file_part}:{event_dict.pop("lineno")}"'
 
         return event_dict
 
