@@ -16,4 +16,5 @@ log = structlog.stdlib.get_logger()
 
 # %%
 log.info("hi")
+log.info("bye")
 # %%

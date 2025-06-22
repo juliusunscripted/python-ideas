@@ -27,10 +27,6 @@ class RobotLog:
     ) -> EventDict:
 
         copied_event_dict = dict(event_dict)
-        copied_event_dict.pop("pathname", None)
-        copied_event_dict.pop("filename", None)
-        copied_event_dict.pop("lineno", None)
-        copied_event_dict.pop("timestamp", None)
         level = copied_event_dict.pop("level", None)
         event = copied_event_dict.pop("event", None)
 
@@ -79,38 +75,38 @@ class LogJump:
 def configure_structlog(
     colors: bool = True, full_path: bool = False, robotframework_logger: bool = False
 ):
-    """configure structlog with useful default and additional features
+    """configure structlog with useful defaults and additional features
 
     Args:
         colors (bool, optional): create colorful logs. Defaults to True.
         full_path (bool, optional): location entry contains full path instead of only file name. Defaults to False.
         robotframework_logger (bool, optional): send logs to robotframework log output (requires robotframework to be installed and used). Defaults to False.
     """
-    call_site_parameters = [
-        # add either pathname or filename and then set full_path to True or False in LogJump below
-        # structlog.processors.CallsiteParameter.PATHNAME,
-        # structlog.processors.CallsiteParameter.FILENAME,
-        structlog.processors.CallsiteParameter.LINENO,
-    ]
 
-    if full_path:
-        call_site_parameters.append(structlog.processors.CallsiteParameter.PATHNAME)
-    else:
-        call_site_parameters.append(structlog.processors.CallsiteParameter.FILENAME)
     processors = [
         structlog.contextvars.merge_contextvars,
         structlog.processors.add_log_level,
         structlog.processors.StackInfoRenderer(),
         structlog.dev.set_exc_info,
-        structlog.processors.TimeStamper(fmt="%Y-%m-%d %H:%M:%S", utc=False),
-        structlog.processors.CallsiteParameterAdder(call_site_parameters),
     ]
     if robotframework_logger:
         processors.append(RobotLog())
-    processors.append(LogJump(full_path=full_path))
 
-    # if not robotframework_log:
-    processors.append(structlog.dev.ConsoleRenderer(colors=colors))
+    call_site_parameters = [structlog.processors.CallsiteParameter.LINENO]
+    # add either pathname or filename and then set full_path to True or False in LogJump below
+    if full_path:
+        call_site_parameters.append(structlog.processors.CallsiteParameter.PATHNAME)
+    else:
+        call_site_parameters.append(structlog.processors.CallsiteParameter.FILENAME)
+
+    processors.extend(
+        [
+            structlog.processors.CallsiteParameterAdder(call_site_parameters),
+            LogJump(full_path=full_path),
+            structlog.processors.TimeStamper(fmt="%Y-%m-%d %H:%M:%S", utc=False),
+            structlog.dev.ConsoleRenderer(colors=colors),
+        ]
+    )
 
     if robotframework_logger:
         # use stderr in case of robot framework so logs do not get captured twice

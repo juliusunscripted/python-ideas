@@ -9,7 +9,9 @@ log-level = "INFO"
 # log-level = "TRACE"
 
 languages = ["en", "de"]
-console = "verbose"
+# console = "verbose"
+# using dotted console output avoids strange line breaks between stdout and stderr output of the verbose version
+console = "dotted"
 listeners = { 'robotframework_tips.utils.robot_listeners.ExceptionTracebackListener' = [
 ], 'robotframework_tips.utils.robot_listeners.StructlogListener' = [
   "true",  # colors

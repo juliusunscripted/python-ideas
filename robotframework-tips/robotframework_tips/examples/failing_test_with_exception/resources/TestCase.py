@@ -17,6 +17,8 @@ class TestCase:
     def count(self):
         self._counter += 1
         log.info("counted up", new_value=self._counter)
+        log.info("one more log message just for fun")
+        log.info("and even more logs")
 
     def expect_counter(self, expected_value: int):
         if self._counter != expected_value:
