@@ -4,10 +4,14 @@ output-dir = "output"
 
 # log-level = "NONE"
 log-level = "INFO"
+# log-level DEBUG (or TRACE) would should full traceback as debug level by default
 # log-level = "DEBUG"
-# log-level TRACE would should full traceback as debug level by default
 # log-level = "TRACE"
 
 languages = ["en", "de"]
-console ="verbose"
-listeners = {'robotframework_tips.utils.robot_exception_traceback_listener.ExceptionTracebackListener' = [], 'robotframework_tips.utils.robot_structlog_listener.StructlogListener' = []}
+console = "verbose"
+listeners = { 'robotframework_tips.utils.robot_listeners.ExceptionTracebackListener' = [
+], 'robotframework_tips.utils.robot_listeners.StructlogListener' = [
+  "true",  # colors
+  "true", # full path (structlog)
+] }

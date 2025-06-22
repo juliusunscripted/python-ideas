@@ -1,0 +1,45 @@
+# failing test caes with exception
+
+## run test case
+
+### via robotcode (vscode)
+
+- install robotcode extension in vscode
+- select testing area in vscode
+- press play on test case
+- the custom listener gets invoked because it is configured in `robot.toml`
+
+
+### via cli
+
+- cd into folder `robotframework-tips`
+
+### listeners as path
+
+- run command with default arguments for structlog listener:
+	```bash
+	robot \
+	  --outputdir "output" \
+	  --listener "robotframework_tips/utils/robot_listeners/ExceptionTracebackListener.py" \
+	  --listener "robotframework_tips/utils/robot_listeners/StructlogListener.py" \
+	  "robotframework_tips/examples/failing_test_with_exception/Failing Test.robot"
+	```
+- run command with custom arguments (colors: bool, full_path: bool) for structlog listener:
+	```bash
+	robot \
+	  --outputdir "output" \
+	  --listener "robotframework_tips/utils/robot_listeners/ExceptionTracebackListener.py" \
+	  --listener "robotframework_tips/utils/robot_listeners/StructlogListener.py;false;true" \
+	  "robotframework_tips/examples/failing_test_with_exception/Failing Test.robot"
+	```
+
+### listeners as modules (. dot notion)
+
+- run command with default arguments for structlog listener:
+	```bash
+	robot \
+	  --outputdir "output" \
+	  --listener "robotframework_tips.utils.robot_listeners.ExceptionTracebackListener" \
+	  --listener "robotframework_tips.utils.robot_listeners.StructlogListener;false;true" \
+	  "robotframework_tips/examples/failing_test_with_exception/Failing Test.robot"
+	```
