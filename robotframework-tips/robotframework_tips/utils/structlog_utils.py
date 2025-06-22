@@ -77,9 +77,15 @@ class LogJump:
 
 
 def configure_structlog(
-    colors: bool = True, full_path: bool = False, robotframework_mode: bool = False
+    colors: bool = True, full_path: bool = False, robotframework_logger: bool = False
 ):
+    """configure structlog with useful default and additional features
 
+    Args:
+        colors (bool, optional): create colorful logs. Defaults to True.
+        full_path (bool, optional): location entry contains full path instead of only file name. Defaults to False.
+        robotframework_logger (bool, optional): send logs to robotframework log output (requires robotframework to be installed and used). Defaults to False.
+    """
     call_site_parameters = [
         # add either pathname or filename and then set full_path to True or False in LogJump below
         # structlog.processors.CallsiteParameter.PATHNAME,
@@ -99,14 +105,14 @@ def configure_structlog(
         structlog.processors.TimeStamper(fmt="%Y-%m-%d %H:%M:%S", utc=False),
         structlog.processors.CallsiteParameterAdder(call_site_parameters),
     ]
-    if robotframework_mode:
+    if robotframework_logger:
         processors.append(RobotLog())
     processors.append(LogJump(full_path=full_path))
 
     # if not robotframework_log:
     processors.append(structlog.dev.ConsoleRenderer(colors=colors))
 
-    if robotframework_mode:
+    if robotframework_logger:
         # use stderr in case of robot framework so logs do not get captured twice
         logger_factory = structlog.PrintLoggerFactory(file=sys.stderr)
     else:

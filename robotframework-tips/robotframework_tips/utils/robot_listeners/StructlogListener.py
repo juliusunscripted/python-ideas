@@ -17,7 +17,7 @@ class StructlogListener:
         #     format="%(message)s", stream=sys.stderr, level=logging.INFO, force=True
         # )
         configure_structlog(
-            colors=colors, full_path=full_path, robotframework_mode=True
+            colors=colors, full_path=full_path, robotframework_logger=True
         )
 
         log.info("structlog is initialized now")
