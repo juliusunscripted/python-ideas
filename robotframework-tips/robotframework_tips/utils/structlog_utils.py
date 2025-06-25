@@ -45,9 +45,16 @@ class RobotLog:
                 print("unexpected log level", level)
                 logger_func = self.robot_logger.debug
 
-        msg = f"{event}"
+        msg = event
+
         if copied_event_dict:
-            msg += f" | {json.dumps(copied_event_dict, ensure_ascii=False)}"
+            try:
+                attributes_string = json.dumps(copied_event_dict, ensure_ascii=False)
+            except TypeError:
+                attributes_string = repr(copied_event_dict)
+
+            msg += f" | {attributes_string}"
+
         logger_func(msg=msg, html=False)
 
         return event_dict
