@@ -4,14 +4,18 @@ output-dir = "output"
 
 # log-level = "NONE"
 log-level = "INFO"
-# log-level DEBUG (or TRACE) would should full traceback as debug level by default
+# log-level DEBUG (or TRACE) would show full traceback
+# as debug level by default
 # log-level = "DEBUG"
 # log-level = "TRACE"
 
 languages = ["en", "de"]
 # console = "verbose"
-# using dotted console output avoids strange line breaks between stdout and stderr output of the verbose version
+# using dotted console output avoids strange line breaks
+# between stdout and stderr output of the verbose version
 console = "dotted"
+
+# add your custom listeners here:
 [listeners]
 'robotframework_tips.utils.robot_listeners.ExceptionTracebackListener' = [
   'INFO', # exception detail log level

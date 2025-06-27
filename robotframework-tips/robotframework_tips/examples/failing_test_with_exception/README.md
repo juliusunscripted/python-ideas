@@ -39,7 +39,7 @@
 
 ### listeners as modules (. dot notion)
 
-- run command with default arguments for structlog listener:
+- run command with manual arguments for structlog listener:
 	```bash
 	robot \
 	  --console "dotted" \

@@ -1,4 +1,3 @@
-from robot.libraries.BuiltIn import BuiltIn
 from robot import running, result
 from robot.api import logger as robot_logger
 from robot.utils.error import get_error_details
