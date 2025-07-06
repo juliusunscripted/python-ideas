@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "ms-python.black-formatter",
+        "mhutchie.git-graph",
+        "yzhang.markdown-all-in-one",
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.datawrangler",
+        "usernamehw.errorlens"
+    ]
+}
